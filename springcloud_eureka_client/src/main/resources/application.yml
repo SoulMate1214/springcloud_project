@@ -1,0 +1,80 @@
+# 服务名称
+spring:
+  application:
+    name: springcloud_eureka_client
+  # 字符集
+  banner:
+    charset: UTF-8
+  messages:
+    encoding: UTF-8
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboot_project?characterEncoding=UTF-8
+    username: root
+    password: 981214
+    driverClassName: com.mysql.jdbc.Driver
+  # Jpa配置.
+  jpa:
+    # 指定数据库
+    database: mysql
+    # 是否显示每个SQL查询的日志
+    show-sql: true
+    hibernate:
+      # Hibernate DDL自动（创建、创建、删除、更新、验证、无）
+      ddl-auto: update
+      # 命名策略org.hibernate.cfg.ImprovedNamingStrategy和org.hibernate.cfg.DefaultNamingStrategy
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        # 在将它们添加到实体管理器之前将其剥离
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        hbm2ddl:
+          auto: update
+  # Redis缓存配置
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 1
+    # Redis服务器地址
+    host: localhost
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    # 连接超时时间（毫秒）
+    timeout: 300
+    # 连接池最大连接数（使用负值表示没有限制） 默认 8
+    lettuce:
+      pool:
+        max-active: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+        max-wait: -1
+        # 连接池中的最大空闲连接 默认 8
+        max-idle: 8
+        # 连接池中的最小空闲连接 默认 0
+        min-idle: 0
+
+
+# 指定端口
+# 我们设定了服务并行通过,所以这边可以设定两个端口，同时启动(8881、8882)
+server:
+  port: 8882
+  tomcat:
+    uri-encoding: UTF-8
+
+# log配置.
+logging:
+  path: ../springcloud_project/log
+  level:
+    com:
+      favorites: DEBUG
+    org:
+      springframework:
+        web: INFO
+      hibernate: ERROR
+
+

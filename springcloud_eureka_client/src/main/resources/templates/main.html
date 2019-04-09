@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>主页</title>
+    <meta charset="UTF-8">
+</head>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--<link rel="stylesheet" type="text/css" href="css/templatemo-style.css">-->
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation" id="headdiv">
+    <!--container-fluid表示自适应大小，container表示居中-->
+    <div class="container">
+        <!--定义顶部导航栏-->
+        <div class="navbar-header">
+            <!--button是当屏幕小于多少时出现的可以打开导航列表的按钮-->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#demo-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#" id="web_title">软件工程学科管理系统</a>
+        </div>
+        <!--collapse用于导航栏折叠之后数据在button按钮里点击显示-->
+        <div class="collapse navbar-collapse" id="demo-navbar">
+            <!--nav navbar-nav表示显示在导航栏里-->
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">功能
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <!--通过dropdown-header来标记一组动作-->
+                        <li class="dropdown-header">信息</li>
+                        <li><a href="#">信息建立</a></li>
+                        <li><a href="#">信息查询</a></li>
+                        <li><a href="#">信息管理</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#" data-toggle="modal" data-target="#about">帮助</a></li>
+
+                <li><input id="inputMessage" type="text" placeholder="请输入" class="form-control"/></li>
+                <li><button id="find" type="button" class="btn btn-default">查询</button></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-2  ">
+            <div class="text-center" id="left-content">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">首页</a>
+                </div>
+
+                <div class="list-group">
+                    <div class="panel-heading panel">
+                        <a data-toggle="collapse" href="#item-BigData" class="list-group-item">
+                            大数据
+                        </a>
+                        <div id="item-BigData" class="panel-collapse collapse">
+                            <div class="item-body">
+                                <ul class="list-unstyled">
+                                    <li class="item-second"><a href="#" class="list-group-item">数据挖掘</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">数据清洗</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">数据导入</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">数据缓存</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">数据分析</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">数据可视化</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-heading panel">
+                        <a data-toggle="collapse" href="#item-C" class="list-group-item">
+                            C语言
+                        </a>
+                        <div id="item-C" class="panel-collapse collapse">
+                            <div class="item-body">
+                                <ul class="list-unstyled">
+                                    <li class="item-second"><a href="#" class="list-group-item">if条件</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">for循环</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">指针</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">结构体</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-heading panel">
+                        <a data-toggle="collapse" href="#item-java" class="list-group-item">
+                            java面向对象编程
+                        </a>
+                        <div id="item-java" class="panel-collapse collapse">
+                            <div class="item-body">
+                                <ul class="list-unstyled">
+                                    <li class="item-second"><a href="#" class="list-group-item">封装、继承、多态</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">io输入输出流</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">多线程</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">反射机制</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">缓存</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">Swing</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-heading panel">
+                        <a data-toggle="collapse" href="#item-dataStruts" class="list-group-item">
+                            数据结构
+                        </a>
+                        <div id="item-dataStruts" class="panel-collapse collapse">
+                            <div class="item-body">
+                                <ul class="list-unstyled">
+                                    <li class="item-second"><a href="#" class="list-group-item">顺序表</a></li>
+                                    <li class="item-second">
+                                        <a data-toggle="collapse" href="#item-lianbiao" class="list-group-item">链表</a>
+                                        <div id="item-lianbiao" class="panel-collapse collapse">
+                                            <div class="item-body">
+                                                <ul class="list-unstyled">
+                                                    <li class="item-second"><a href="#" class="list-group-item">B树</a>
+                                                    </li>
+                                                    <li class="item-second"><a href="#" class="list-group-item">B+树</a>
+                                                    </li>
+                                                    <li class="item-second"><a href="#" class="list-group-item">Z树</a>
+                                                    </li>
+                                                    <li class="item-second"><a href="#" class="list-group-item">B-树</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                    <li class="item-second"><a href="#" class="list-group-item">树表</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">图</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-heading panel">
+                        <a data-toggle="collapse" href="#item-lisan" class="list-group-item">
+                            离散数学
+                        </a>
+                        <div id="item-lisan" class="panel-collapse collapse">
+                            <div class="item-body">
+                                <ul class="list-unstyled">
+                                    <li class="item-second"><a href="#" class="list-group-item">逻辑推导</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">树</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">图</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-heading panel">
+                        <a data-toggle="collapse" href="#item-javaweb" class="list-group-item">
+                            web开发
+                        </a>
+                        <div id="item-javaweb" class="panel-collapse collapse">
+                            <div class="item-body">
+                                <ul class="list-unstyled">
+                                    <li class="item-second">
+                                        <a data-toggle="collapse" href="#item-web" class="list-group-item">前端学习</a>
+                                        <div id="item-web" class="panel-collapse collapse">
+                                            <div class="item-body">
+                                                <ul class="list-unstyled">
+                                                    <li class="item-second"><a href="#"
+                                                                               class="list-group-item">html布局</a>
+                                                    </li>
+                                                    <li class="item-second"><a href="#"
+                                                                               class="list-group-item">css样式</a>
+                                                    </li>
+                                                    <li class="item-second"><a href="#" class="list-group-item">js事件</a>
+                                                    </li>
+                                                    <li class="item-second"><a href="#" class="list-group-item">bootstrapUI</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="item-second"><a href="#" class="list-group-item">java高级</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">框架搭建</a></li>
+                                    <li class="item-second"><a href="#" class="list-group-item">框架应用</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="list-group">					
+                    <a href="#" class="list-group-item">数据爬取</a>					
+                    <a href="#" class="list-group-item">数据清洗</a>					
+                    <a href="#" class="list-group-item">数据导入</a>	
+                    <a href="#" class="list-group-item">数据缓存</a>	
+                    <a href="#" class="list-group-item">数据分析5</a>	
+                    <a href="#" class="list-group-item">数据可视化6</a>	
+                    <a href="#" class="list-group-item">c语言</a>	
+                    <a href="#" class="list-group-item">java面向对象编程</a>	
+                    <a href="#" class="list-group-item">数据结构</a>		
+                    <a href="#" class="list-group-item">Web前端</a>	
+                    <a href="#" class="list-group-item">JS基础</a>	
+                    <a href="#" class="list-group-item">AJAX应用</a>	
+                    <a href="#" class="list-group-item">操作系统</a>	
+                    <a href="#" class="list-group-item">高数1</a>	
+                    <a href="#" class="list-group-item">离散数学</a>	
+                    <a href="#" class="list-group-item">线性代数</a>			
+                </div> -->
+
+                <div class="list-group">
+                    <a href="#" class="list-group-item">设置</a>
+                    <a href="#" class="list-group-item">帮助</a>
+                    <a href="#" class="list-group-item">关于</a>
+                    <a href="#" class="list-group-item">举报</a>
+                    <a href="#" class="list-group-item">联系我们</a>
+                    <a href="#" class="list-group-item">关于系统</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-10">
+            <h2>管理控制台</h2>
+            <hr style="height:10px;border:none;border-top:2px solid #e95d8f;" />
+            <div id="panel-group">                <!-- 1 -->
+                <div class="panel panel-primary">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">英雄榜</div>
+                    <!-- Table -->
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>英雄</th>
+                                <th>荣誉称号</th>
+                                <th>性别</th>
+                                <th>擅长位置</th>
+                                <th>定位</th>
+                                <th>评价</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                            <tr>
+                                <th>0</th>
+                                <th><input type="text" placeholder="英雄" class="form-control" id="name"/></th>
+                                <th><input type="text" placeholder="荣誉称号" class="form-control" id="appellation"/></th>
+                                <th>
+                                    <select class="form-control" id="sex" onchange="gradeChange()">
+                                        <option value="1">男</option>
+                                        <option value="0">女</option>
+                                    </select>
+                                </th>
+                                <th><input type="text" placeholder="擅长位置" class="form-control" id="position"/></th>
+                                <th><input type="text" placeholder="定位" class="form-control" id="profession"/></th>
+                                <th><input type="text" placeholder="评价" class="form-control" id="evaluate"/></th>
+                                <th class="text-center">
+                                    <button type="button" id="heroInsert" class="btn btn-info btn-lg">添加</button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                            <tr th:each="hero,heroStat : ${heroList}">
+                                <th th:text="${heroStat.index}+1">1</th>
+                                <th th:text="${hero.name}">初始英雄</th>
+                                <th th:text="${hero.appellation}">小菜鸡</th>
+                                <th th:if="${hero.sex == true}">男</th>
+                                <th th:if="${hero.sex == false}">女</th>
+                                <th th:text="${hero.position}">下路</th>
+                                <th th:text="${hero.profession}">ADC</th>
+                                <th th:text="${hero.evaluate}">小瓜皮</th>
+                                <th class="text-center">
+                                    <a type="button" class="btn btn-warning btn-sm" th:href="@{/update(id=${hero.id},name=${hero.name},appellation=${hero.appellation},sex=${hero.sex},position=${hero.position},profession=${hero.profession},evaluate=${hero.evaluate})}">修改</a>
+                                    <a th:href="@{/delete(id=${hero.id},nowPage=${pageNow})}" class="btn btn-danger btn-sm">剥离</a>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <nav aria-label="...">
+                            <ul class="pagination pagination-sm">
+                                <li class="disabled"><a aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
+                                <li class="active" th:each="num:${pageBtns}" >
+                                    <a href="#" th:text="${num}" class="nowNum">
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li><a aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
+                                共<span th:text="${pageCount}"></span> 页 ||
+                                共<span th:text="${total}"></span>条 ||
+                                当前第<span th:text="${pageNow+1}"></span>页
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+    function gradeChange(){
+        var objS = $("#sex");
+        var grade = objS.options[objS.selectedIndex].grade;
+        alert(grade);
+    }
+
+    $(".nowNum").on("click", function (){
+        $.ajax({
+            url: "/getPage",
+            type: "post",
+            data: {
+                name : $("#name").val(),
+                nowPage : $(this).text() - 1
+            },
+            success: function f(data) {
+                $("body").html(data);
+            },
+            error: function f(data) {
+                console.log(data);
+            },
+        })
+    });
+
+    $("#heroInsert").on("click", function () {
+        $.ajax({
+            url: "/save",
+            type: "post",
+            data: {
+                name:$("#name").val(),
+                appellation:$("#appellation").val(),
+                sex:$("#sex").val(),
+                position:$("#position").val(),
+                profession:$("#profession").val(),
+                evaluate:$("#evaluate").val()
+            },
+            success: function f(data) {
+                window.location.href="/getPage"
+            },
+            error: function f(data) {
+                console.log(data);
+            },
+        })
+    });
+
+    $("#find").on("click", function () {
+        $.ajax({
+            url: "/getPage",
+            type: "post",
+            data: {
+                name: $("#inputMessage").val(),
+            },
+            success: function f(data) {
+                $("body").html(data);
+            },
+            error: function f(data) {
+                console.log(data);
+            },
+        })
+    })
+</script>
+</html>

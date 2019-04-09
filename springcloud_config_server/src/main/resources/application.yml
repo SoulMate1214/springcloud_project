@@ -1,0 +1,12 @@
+# 服务名称
+spring:
+  profiles:
+    active: jdbc
+  application:
+    name: springcloud_config_server
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboot_project?characterEncoding=UTF-8
+    username: root
+    password: 981214
+    driverClassName: com.mysql.jdbc.Driver

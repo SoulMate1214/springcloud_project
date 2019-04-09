@@ -1,0 +1,17 @@
+# 服务名称
+spring:
+  application:
+    name: springcloud_ribbon
+
+# 指定端口
+server:
+  port: 8883
+
+# ribbon负载均衡器作为一个服务消费者，允许被注册
+# 指向server:服务发现者（8880），形成映射关系
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8880/eureka/

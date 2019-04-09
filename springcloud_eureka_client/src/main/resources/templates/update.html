@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>修改</title>
+</head>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<body>
+<div class="text-center">
+    <h2>管理控制台</h2>
+    <hr style="height:10px;border:none;border-top:2px solid #e95d8f;"/>
+    <div id="panel-group">                <!-- 1 -->
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">英雄榜</div>
+            <!-- Table -->
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>英雄</th>
+                    <th>荣誉称号</th>
+                    <th>性别</th>
+                    <th>擅长位置</th>
+                    <th>定位</th>
+                    <th>评价</th>
+                    <th class="text-center">操作</th>
+                </tr>
+                <tr th:each="hero,heroStat : ${hero}">
+                    <th>0</th>
+                    <input type="text" id="ids" th:value="${hero.id}" hidden/>
+                    <th><input th:value="${hero.name}" type="text" placeholder="英雄" class="form-control" id="name"/></th>
+                    <th><input th:value="${hero.appellation}" type="text" placeholder="荣誉称号" class="form-control"
+                               id="appellation"/></th>
+                    <th>
+                        <select class="form-control" id="sex" onchange="gradeChange()">
+                            <option value="1">男</option>
+                            <option value="0">女</option>
+                        </select>
+                    </th>
+                    <th><input th:value="${hero.position}" type="text" placeholder="擅长位置" class="form-control"
+                               id="position"/></th>
+                    <th><input th:value="${hero.profession}" type="text" placeholder="定位" class="form-control"
+                               id="profession"/></th>
+                    <th><input th:value="${hero.evaluate}" type="text" placeholder="评价" class="form-control"
+                               id="evaluate"/></th>
+                    <th class="text-center">
+                        <button type="button" class="btn btn-warning btn-lg" id="update">修改</button>
+                    </th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+
+    function gradeChange(){
+        var objS = $("#sex");
+        var grade = objS.options[objS.selectedIndex].grade;
+        alert(grade);
+    }
+
+    $("#update").on("click", function () {
+        console.log($("#ids").val());
+        $.ajax({
+            url: "/save",
+            type: "post",
+            data: {
+                id: $("#ids").val(),
+                name: $("#name").val(),
+                appellation: $("#appellation").val(),
+                sex: $("#sex").val(),
+                position: $("#position").val(),
+                profession: $("#profession").val(),
+                evaluate: $("#evaluate").val()
+            },
+            success: function f(data) {
+                window.location.href="/getPage"
+            },
+            error: function f(data) {
+                console.log(data);
+            },
+        })
+    });
+</script>
+</html>

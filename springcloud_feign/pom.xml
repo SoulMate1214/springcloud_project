@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--父服务声明-->
+    <parent>
+        <groupId>com.gzmu</groupId>
+        <artifactId>springcloud_project</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <!--项目相关信息-->
+    <groupId>com.gzmu</groupId>
+    <artifactId>springcloud_feign</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>springcloud_feign</name>
+    <description>Demo project for Spring Boot</description>
+
+    <dependencies>
+        <!--feign负载均衡-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <!--eureka服务消费者-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
+</project>
