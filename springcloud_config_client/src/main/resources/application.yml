@@ -18,18 +18,3 @@ spring:
       profile: demo
       # 指明配置服务中心的网址
       uri: http://localhost:8888/
-  # 数据库配置
-  datasource:
-    url: jdbc:mysql://localhost:3306/springboot_project?characterEncoding=UTF-8
-    username: root
-    password: 981214
-    driverClassName: com.mysql.jdbc.Driver
-
-# config配置客户端作为一个服务消费者，允许被注册
-# 指向server:服务发现者（8880），形成映射关系
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8880/eureka/

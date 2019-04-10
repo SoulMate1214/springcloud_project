@@ -1,11 +1,13 @@
-# 此时的eureka作为一个client:服务提供者，允许被注册
-# 指向server:服务发现者（8880），形成映射关系
+# eureka会将自己作为client来尝试注册
+# 这个服务是作为server而不是client，我们需要禁止它注册自身
 eureka:
   instance:
     hostname: localhost
   client:
+    registerWithEureka: false
+    fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8880/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
 # 数据库配置（每个服务都得加上）
 spring:

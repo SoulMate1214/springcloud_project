@@ -16,7 +16,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @EnableDiscoveryClient
 @EnableEurekaClient
-@EnableScheduling
+//@EnableScheduling
 @EnableCaching
 @SpringBootApplication
 public class SpringcloudEurekaClientApplication {

@@ -1,4 +1,4 @@
-# 此时的eureka作为一个client:服务提供者，允许被注册
+# ribbon负载均衡器作为一个服务消费者，允许被注册
 # 指向server:服务发现者（8880），形成映射关系
 eureka:
   instance:

@@ -1,4 +1,4 @@
-# 指定端口
+# 指定端口（config配置中心的端口必须为8888，需要改变要在bootstrap.yml里面指定端口）
 server:
   port: 8888
   tomcat:
@@ -7,22 +7,16 @@ server:
 # 服务名称
 spring:
   application:
-    # config读取git远程仓库的配置文件，访问形式
-    # 127.0.0.1:8887/文件名/随便取个名字
-    # /{application}/{profile}[/{label}]
-    # /{application}-{profile}.yml
-    # /{label}/{application}-{profile}.yml
-    # /{application}-{profile}.properties
-    # /{label}/{application}-{profile}.properties
     name: springcloud_config_server
 
-  # 数据库配置
-  datasource:
-    url: jdbc:mysql://localhost:3306/springboot_project?characterEncoding=UTF-8
-    username: root
-    password: 981214
-    driverClassName: com.mysql.jdbc.Driver
-
+  # 配置到远程git仓库
+  # config读取git远程仓库的配置文件，访问形式
+  # 127.0.0.1:8887/文件名/随便取个名字
+  # /{application}/{profile}[/{label}]
+  # /{application}-{profile}.yml
+  # /{label}/{application}-{profile}.yml
+  # /{application}-{profile}.properties
+  # /{label}/{application}-{profile}.properties
   cloud:
     config:
       server:
@@ -38,11 +32,3 @@ spring:
       # 配置仓库的分支
       label: master
 
-# config配置中心作为一个服务消费者，允许被注册
-# 指向server:服务发现者（8880），形成映射关系
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8880/eureka/

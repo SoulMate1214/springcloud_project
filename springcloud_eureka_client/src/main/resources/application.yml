@@ -1,7 +1,15 @@
+# 指定端口
+# 我们设定了服务并行通过,所以这边可以设定两个端口，同时启动(8881、8882)
+server:
+  port: 8881
+  tomcat:
+    uri-encoding: UTF-8
+
 # 服务名称
 spring:
   application:
     name: springcloud_eureka_client
+
   # 字符集
   banner:
     charset: UTF-8
@@ -12,12 +20,7 @@ spring:
       charset: UTF-8
       force: true
       enabled: true
-  # 数据库配置
-  datasource:
-    url: jdbc:mysql://localhost:3306/springboot_project?characterEncoding=UTF-8
-    username: root
-    password: 981214
-    driverClassName: com.mysql.jdbc.Driver
+
   # Jpa配置.
   jpa:
     # 指定数据库
@@ -35,10 +38,11 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
         hbm2ddl:
           auto: update
+
   # Redis缓存配置
   redis:
     # Redis数据库索引（默认为0）
-    database: 1
+    database: 0
     # Redis服务器地址
     host: localhost
     # Redis服务器连接端口
@@ -57,14 +61,6 @@ spring:
         max-idle: 8
         # 连接池中的最小空闲连接 默认 0
         min-idle: 0
-
-
-# 指定端口
-# 我们设定了服务并行通过,所以这边可以设定两个端口，同时启动(8881、8882)
-server:
-  port: 8881
-  tomcat:
-    uri-encoding: UTF-8
 
 # log配置.
 logging:
