@@ -1,0 +1,48 @@
+# 指定端口
+server:
+  port: 8888
+  tomcat:
+    uri-encoding: UTF-8
+
+# 服务名称
+spring:
+  application:
+    # config读取git远程仓库的配置文件，访问形式
+    # 127.0.0.1:8887/文件名/随便取个名字
+    # /{application}/{profile}[/{label}]
+    # /{application}-{profile}.yml
+    # /{label}/{application}-{profile}.yml
+    # /{application}-{profile}.properties
+    # /{label}/{application}-{profile}.properties
+    name: springcloud_config_server
+
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboot_project?characterEncoding=UTF-8
+    username: root
+    password: 981214
+    driverClassName: com.mysql.jdbc.Driver
+
+  cloud:
+    config:
+      server:
+        git:
+          # 配置git仓库地址
+          uri: https://github.com/SoulMate1214/springcloud_config
+          # 配置仓库路径
+          searchPaths: src
+          # 访问git仓库的用户名（如果是公开的，不需要用户名和密码）
+          username:
+          # 访问git仓库的用户密码
+          password:
+      # 配置仓库的分支
+      label: master
+
+# config配置中心作为一个服务消费者，允许被注册
+# 指向server:服务发现者（8880），形成映射关系
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8880/eureka/

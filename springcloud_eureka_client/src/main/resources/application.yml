@@ -62,7 +62,7 @@ spring:
 # 指定端口
 # 我们设定了服务并行通过,所以这边可以设定两个端口，同时启动(8881、8882)
 server:
-  port: 8882
+  port: 8881
   tomcat:
     uri-encoding: UTF-8
 
