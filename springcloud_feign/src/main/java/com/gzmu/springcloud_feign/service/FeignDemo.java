@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface FeignDemo {
     /**
      *
-     * @param name
+     * @param server
      * @return
      */
-    @RequestMapping(value = "/helloWorld",method = RequestMethod.GET)
-    String feign (String name);
+    @RequestMapping(value = "/we?server=springcloud-feign",method = RequestMethod.GET)
+    String feign (String server);
+
 }

@@ -2,10 +2,19 @@
 server:
   port: 8883
 
-# 服务名称
+# spring-cloud配置
 spring:
   application:
-    name: springcloud_ribbon
+    # 服务名称
+    name: springcloud-ribbon
 
-
+#开启熔断监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
 

@@ -1,0 +1,30 @@
+# 指定端口
+server:
+  port: 8888
+
+# spring-cloud配置
+spring:
+  application:
+    # 服务名称
+    name: springcloud-turbine
+
+#配置开启熔断监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+
+#配置开启聚合熔断监控
+turbine:
+  app-config: springcloud-ribbon,springcloud-eureka-client
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combine-host: true
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream
+

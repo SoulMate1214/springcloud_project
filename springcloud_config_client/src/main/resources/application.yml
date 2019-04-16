@@ -4,11 +4,18 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
-# 服务名称
+# spring-cloud配置
 spring:
   application:
-    name: springcloud_config_client
+    # 服务名称
+    name: springcloud-config-client
+
   cloud:
+    # 开启spring-cloud-bus服务
+    bus:
+      enabled: true
+      trace:
+        enabled: true
     config:
       # 文件前缀名
       name: springcloud
@@ -18,3 +25,24 @@ spring:
       profile: demo
       # 指明配置服务中心的网址
       uri: http://localhost:8888/
+
+  # 消息队列
+  rabbitmq:
+    # rabbitmq的host
+    host: localhost
+    # 端口
+    port: 5672
+    # 用户名
+    username: guest
+    # 密码
+    password: guest
+
+# spring-cloud-bus动态刷新
+# 当需要动态刷新配置文件只需要用post请求http://localhost:8887/actuator/bus-refresh
+# 不同端口的服务都得请求一次
+# 必须是post请求，建议使用postman发送
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

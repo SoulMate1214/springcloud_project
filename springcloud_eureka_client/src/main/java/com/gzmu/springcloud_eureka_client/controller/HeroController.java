@@ -3,11 +3,13 @@ package com.gzmu.springcloud_eureka_client.controller;
 import com.gzmu.springcloud_eureka_client.model.Hero;
 import com.gzmu.springcloud_eureka_client.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,11 +24,9 @@ import java.util.UUID;
  * @CacheEvict，指定key，删除缓存数据，allEntries=true,方法调用后将立即清除缓存
  */
 @Controller
-@CacheConfig(cacheNames = "hero")
 public class HeroController {
 
     private final HeroService heroService;
-    private Hero hero;
 
     @Autowired
     public HeroController(HeroService heroService) {
@@ -54,26 +54,15 @@ public class HeroController {
 
     /**
      * 增加
-     * 使用到缓存
+     *
      * @param hero
      * @return
      */
     @PostMapping(path = "/save")
     @ResponseBody
-    @Cacheable(key ="'hero-key'")
     public Hero save(Hero hero) {
         heroService.save(hero);
         return hero;
-    }
-
-    /**
-     * 全查
-     *
-     * @return
-     */
-    @PostMapping(path = "/findAll")
-    public List<Hero> findAll() {
-        return heroService.findAll();
     }
 
     /**
@@ -89,8 +78,69 @@ public class HeroController {
     }
 
     /**
+     * 修改
+     *
+     * @param
+     * @return
+     */
+    @RequestMapping(path = "/update")
+    public String update(Hero hero, Model model) {
+        model.addAttribute("hero", hero);
+        return "/update";
+    }
+
+    /**
+     * 根据名字查询
+     *
+     * @return
+     */
+    @PostMapping(path = "/findByName")
+    public String findByName(@RequestParam("name") String name, Model model) {
+        List<Hero> heroes = heroService.findByNameLike(name);
+        model.addAttribute("heroList", heroes);
+        model.addAttribute("pageCount", 1);
+        model.addAttribute("total", 1);
+        model.addAttribute("pageNow", 1);
+        model.addAttribute("pageBtns", 1);
+        return "/main";
+    }
+
+    /**
+     * 跳转数据页面
+     * 模糊分页
+     *
+     * @param name
+     * @param nowPage
+     * @param model
+     * @return
+     */
+
+    @RequestMapping("/getPage")
+    public String getPage(String name, Integer nowPage, Model model) {
+        if (nowPage == null) {
+            nowPage = 0;
+        }
+        PageRequest pr = PageRequest.of(nowPage, 10, Sort.by(Sort.Direction.ASC, "id"));
+        Page<Hero> page = heroService.findByNameLike(name, pr);
+        List<Hero> list = page.getContent();
+        // 获取总页数
+        int pageCount = page.getTotalPages();
+        int[] pageBtns = new int[pageCount];
+        for (int i = 0; i < pageBtns.length; i++) {
+            pageBtns[i] = i + 1;
+        }
+        model.addAttribute("heroList", list);
+        model.addAttribute("pageCount", pageCount);
+        model.addAttribute("total", page.getTotalElements());
+        model.addAttribute("pageNow", page.getNumber());
+        model.addAttribute("pageBtns", pageBtns);
+        return "/main";
+    }
+
+    /**
      * Redis的Session测试,需要把@Controller改为@RestController
      * 获取session的uid
+     *
      * @param session
      * @return
      */
@@ -103,5 +153,4 @@ public class HeroController {
         session.setAttribute("uid", uid);
         return session.getId();
     }
-
 }

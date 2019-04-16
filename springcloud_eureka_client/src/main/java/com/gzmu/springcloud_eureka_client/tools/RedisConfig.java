@@ -1,4 +1,5 @@
 package com.gzmu.springcloud_eureka_client.tools;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,6 +33,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * 密匙生成器
+     *
      * @return KeyGenerator
      */
     @Bean
@@ -52,26 +54,28 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * 缓存管理器
+     *
      * @param redisConnectionFactory
      * @return RedisCacheManager
      */
     @Bean
-        public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
-            RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-                    // 设置缓存有效期一小时
-                    .entryTtl(Duration.ofHours(1));
-            return RedisCacheManager
-                    .builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
-                    .cacheDefaults(redisCacheConfiguration).build();
-        }
+    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
+                // 设置缓存有效期一小时
+                .entryTtl(Duration.ofHours(1));
+        return RedisCacheManager
+                .builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
+                .cacheDefaults(redisCacheConfiguration).build();
+    }
 
     /**
      * 序列化配置1
+     *
      * @param factory
      * @return template
      */
     @Bean
-    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory){
+    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
         StringRedisTemplate template = new StringRedisTemplate(factory);
         //设置序列化工具
         setSerializer(template);
@@ -81,10 +85,11 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * 序列化配置2
+     *
      * @param template
      */
-    private void setSerializer(StringRedisTemplate template){
-        @SuppressWarnings({ "rawtypes", "unchecked" })
+    private void setSerializer(StringRedisTemplate template) {
+        @SuppressWarnings({"rawtypes", "unchecked"})
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);

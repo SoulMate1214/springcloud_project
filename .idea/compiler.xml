@@ -13,6 +13,8 @@
         <module name="springcloud_feign" />
         <module name="springcloud_gateways" />
         <module name="springcloud_ribbon" />
+        <module name="springcloud_sleuth" />
+        <module name="springcloud_turbine" />
         <module name="springcloud_zuul" />
       </profile>
     </annotationProcessing>
@@ -35,6 +37,8 @@
       <module name="springcloud_gateways" options="-parameters" />
       <module name="springcloud_project" options="-parameters" />
       <module name="springcloud_ribbon" options="-parameters" />
+      <module name="springcloud_sleuth" options="-parameters" />
+      <module name="springcloud_turbine" options="-parameters" />
       <module name="springcloud_zuul" options="-parameters" />
     </option>
   </component>

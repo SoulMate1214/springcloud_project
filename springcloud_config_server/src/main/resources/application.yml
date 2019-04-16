@@ -4,10 +4,11 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
-# 服务名称
+# spring-cloud配置
 spring:
   application:
-    name: springcloud_config_server
+    # 服务名称
+    name: springcloud-config-server
 
   # 配置到远程git仓库
   # config读取git远程仓库的配置文件，访问形式

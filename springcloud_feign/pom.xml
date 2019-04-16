@@ -23,7 +23,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
         <!--eureka服务消费者-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

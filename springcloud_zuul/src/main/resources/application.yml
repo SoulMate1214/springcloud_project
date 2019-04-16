@@ -2,9 +2,10 @@
 server:
   port: 8885
 
-# 服务名称
+# spring-cloud配置
 spring:
   application:
+    # 服务名称
     name: springcloud_zuul
 
 # 以/api-ribbon/开头的请求都转发给springcloud-ribbon服务，例如访问localhost:8885/api-ribbon/hellWorld
@@ -18,3 +19,6 @@ zuul:
     api-b:
       path: /api-b/**
       serviceId: springcloud-feign
+    api-c:
+      path: /api-c/**
+      serviceId: springcloud-eureka-client

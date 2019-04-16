@@ -9,6 +9,9 @@
     <file url="file://$PROJECT_DIR$/springcloud_feign" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springcloud_gateways" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springcloud_ribbon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud_sleuth" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud_turbine" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springcloud_turbine" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springcloud_zuul" charset="UTF-8" />
   </component>
 </project>

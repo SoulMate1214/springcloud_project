@@ -9,6 +9,6 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * 原 Spring Boot 的 server.session.timeout 属性不再生效。
  */
 @Configuration
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400*30)
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400 * 30)
 public class SessionConfig {
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--父服务声明-->
+    <parent>
+        <groupId>com.gzmu</groupId>
+        <artifactId>springcloud_project</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <!--项目相关信息-->
+    <groupId>com.gzmu</groupId>
+    <artifactId>springcloud_turbine</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springcloud_turbine</name>
+    <packaging>jar</packaging>
+    <description>Demo project for Spring Boot</description>
+
+    <dependencies>
+        <!--熔断器-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+
+        <!--监控熔断-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+        </dependency>
+
+        <!--聚合监控熔断-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+        </dependency>
+
+        <!--eureka服务消费者-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
+</project>

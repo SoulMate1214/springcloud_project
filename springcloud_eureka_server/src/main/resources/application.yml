@@ -2,10 +2,11 @@
 server:
   port: 8880
 
-# 服务名称
+# spring-cloud配置
 spring:
   application:
-    name: springcloud_eureka_server
+    # 服务名称
+    name: springcloud-eureka-server
 
 
 

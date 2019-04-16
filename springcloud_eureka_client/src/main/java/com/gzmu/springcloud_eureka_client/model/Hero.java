@@ -1,16 +1,17 @@
 package com.gzmu.springcloud_eureka_client.model;
 
-import org.springframework.context.annotation.Bean;
-
 import javax.persistence.*;
 import java.io.Serializable;
+
 @Entity
 @Table(name = "hero")
 public class Hero implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //主键id
+    /**
+     * 主键id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -29,7 +30,11 @@ public class Hero implements Serializable {
     @Column(name = "remark", nullable = false)
     private String remark;
 
-
+    /**
+     * toString方法
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Hero{" +

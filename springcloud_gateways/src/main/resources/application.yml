@@ -2,10 +2,11 @@
 server:
   port: 8886
 
-# 服务名称
+# spring-cloud配置
 spring:
   application:
-    name: springcloud_gateway
+    # 服务名称
+    name: springcloud-gateway
 
   # 开启服务发现注册发现
   # 并且spring cloud gateway自动根据服务发现为每一个服务创建了一个router
@@ -20,13 +21,13 @@ spring:
           # 这样的话就可以访问127.0.0.1:8886/另一个服务提供者的服务名/方法负载访问了
           lowerCaseServiceId: true
 
-        # 路由可以通过配置文件添加，这里的路由是为了别的服务名重命名（重新调整路劲）（如果不加这个的话访问将是一大串路劲）
-        # 加上这个的话需要把上面的enable改为false，不然的话springcloud-eureka-client每个方法都会创建两个路由
-        routes:
-        - id: springcloud-eureka-client
+      # 路由可以通过配置文件添加，这里的路由是为了别的服务名重命名（重新调整路劲）（如果不加这个的话访问将是一大串路劲）
+      # 加上这个的话需要把上面的enable改为false，不然的话springcloud-eureka-client每个方法都会创建两个路由
+      routes:
+        - id: clientRout
           uri: lb://springcloud-eureka-client
           predicates:
-            - Path=/demo/**
+            - Path=/client/*
           filters:
             - StripPrefix=1
 

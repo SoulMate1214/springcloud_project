@@ -14,6 +14,7 @@ public interface HeroMapper extends JpaRepository<Hero, Integer> {
     /**
      * 条件查询
      * 根据id查找
+     *
      * @param id
      * @return
      */
@@ -22,6 +23,7 @@ public interface HeroMapper extends JpaRepository<Hero, Integer> {
     /**
      * 条件查询
      * 根据name查找
+     *
      * @param name
      * @return
      */
@@ -29,6 +31,7 @@ public interface HeroMapper extends JpaRepository<Hero, Integer> {
 
     /**
      * 模糊查询
+     *
      * @param name
      * @return
      */
@@ -36,6 +39,7 @@ public interface HeroMapper extends JpaRepository<Hero, Integer> {
 
     /**
      * 批量查询
+     *
      * @param ids
      * @return
      */
@@ -43,15 +47,17 @@ public interface HeroMapper extends JpaRepository<Hero, Integer> {
 
     /**
      * 全查
+     *
      * @return
      */
     List<Hero> findAll();
 
     /**
      * 分页查询
+     *
      * @param name
      * @param pageable
      * @return
      */
-    public Page<Hero> findByNameLike(String name, Pageable pageable);
+    Page<Hero> findByNameLike(String name, Pageable pageable);
 }
