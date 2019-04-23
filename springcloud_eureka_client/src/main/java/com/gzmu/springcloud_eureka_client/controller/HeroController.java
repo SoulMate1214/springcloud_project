@@ -1,11 +1,12 @@
 package com.gzmu.springcloud_eureka_client.controller;
 
-import com.gzmu.springcloud_eureka_client.model.Hero;
+import com.gzmu.springcloud_eureka_client.entity.Hero;
 import com.gzmu.springcloud_eureka_client.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ import java.util.UUID;
  * @CacheEvict，指定key，删除缓存数据，allEntries=true,方法调用后将立即清除缓存
  */
 @Controller
+@RepositoryRestController
 public class HeroController {
 
     private final HeroService heroService;

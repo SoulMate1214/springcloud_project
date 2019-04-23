@@ -24,6 +24,12 @@
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
 
+        <!--zipkin依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+        </dependency>
+
         <!--eureka服务消费者-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

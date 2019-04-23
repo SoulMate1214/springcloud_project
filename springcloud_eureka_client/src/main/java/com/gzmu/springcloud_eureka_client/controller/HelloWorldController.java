@@ -77,4 +77,7 @@ public class HelloWorldController {
         return "hi " + name + " ,i am from port:" + port;
     }
 
+    public String hiError(String name) {
+        return "hi,"+name+",sorry,error!";
+    }
 }

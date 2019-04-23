@@ -1,7 +1,7 @@
 package com.gzmu.springcloud_eureka_client.service.serviceImpl;
 
-import com.gzmu.springcloud_eureka_client.mapper.HeroMapper;
-import com.gzmu.springcloud_eureka_client.model.Hero;
+import com.gzmu.springcloud_eureka_client.repository.HeroRepository;
+import com.gzmu.springcloud_eureka_client.entity.Hero;
 import com.gzmu.springcloud_eureka_client.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -17,48 +17,48 @@ import java.util.List;
 @Service
 @CacheConfig(cacheNames = "hero")
 public class HeroServiceImpl implements HeroService {
-    private final HeroMapper heroMapper;
+    private final HeroRepository heroRepository;
 
     @Autowired
-    public HeroServiceImpl(HeroMapper heroMapper) {
-        this.heroMapper = heroMapper;
+    public HeroServiceImpl(HeroRepository heroRepository) {
+        this.heroRepository = heroRepository;
     }
 
     @Override
     @CacheEvict(key = "'insertHero-key'", allEntries = true)
     public void save(Hero hero) {
-        heroMapper.save(hero);
+        heroRepository.save(hero);
     }
 
     @Override
     @CacheEvict(key = "'deleteHero-key'", allEntries = true)
     public void deleteById(int id) {
-        heroMapper.deleteById(id);
+        heroRepository.deleteById(id);
     }
 
     @Override
     public Hero findHeroById(int id) {
-        return heroMapper.findHeroById(id);
+        return heroRepository.findHeroById(id);
     }
 
     @Override
     public List<Hero> findHeroByName(String name) {
-        return heroMapper.findHeroByName(name);
+        return heroRepository.findHeroByName(name);
     }
 
     @Override
     public List<Hero> findByNameLike(String name) {
-        return heroMapper.findByNameLike(name);
+        return heroRepository.findByNameLike(name);
     }
 
     @Override
     public List<Hero> findByIdIn(Collection<Integer> ids) {
-        return heroMapper.findByIdIn(ids);
+        return heroRepository.findByIdIn(ids);
     }
 
     @Override
     public List<Hero> findAll() {
-        return heroMapper.findAll();
+        return heroRepository.findAll();
     }
 
     @Override
@@ -69,6 +69,6 @@ public class HeroServiceImpl implements HeroService {
         } else {
             name = "%" + name + "%";
         }
-        return heroMapper.findByNameLike(name, pageable);
+        return heroRepository.findByNameLike(name, pageable);
     }
 }

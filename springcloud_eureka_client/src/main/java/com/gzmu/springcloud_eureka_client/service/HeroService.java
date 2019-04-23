@@ -1,6 +1,6 @@
 package com.gzmu.springcloud_eureka_client.service;
 
-import com.gzmu.springcloud_eureka_client.model.Hero;
+import com.gzmu.springcloud_eureka_client.entity.Hero;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

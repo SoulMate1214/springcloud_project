@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="demo1 (1)" />
         <module name="springcloud_config_client" />
         <module name="springcloud_config_server" />
         <module name="springcloud_eureka_client" />
@@ -13,6 +14,7 @@
         <module name="springcloud_feign" />
         <module name="springcloud_gateways" />
         <module name="springcloud_ribbon" />
+        <module name="springcloud_security" />
         <module name="springcloud_sleuth" />
         <module name="springcloud_turbine" />
         <module name="springcloud_zuul" />
@@ -20,6 +22,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="demo" target="1.8" />
+      <module name="demo1" target="1.8" />
+      <module name="demo1 (1)" target="1.8" />
       <module name="springcloud_gateway" target="1.8" />
       <module name="springcloud_gateway (1)" target="1.5" />
     </bytecodeTargetLevel>
@@ -27,6 +31,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demo" options="-parameters" />
+      <module name="demo1 (1)" options="-parameters" />
       <module name="springcloud_config_client" options="-parameters" />
       <module name="springcloud_config_server" options="-parameters" />
       <module name="springcloud_eureka_client" options="-parameters" />
@@ -37,6 +42,7 @@
       <module name="springcloud_gateways" options="-parameters" />
       <module name="springcloud_project" options="-parameters" />
       <module name="springcloud_ribbon" options="-parameters" />
+      <module name="springcloud_security" options="-parameters" />
       <module name="springcloud_sleuth" options="-parameters" />
       <module name="springcloud_turbine" options="-parameters" />
       <module name="springcloud_zuul" options="-parameters" />

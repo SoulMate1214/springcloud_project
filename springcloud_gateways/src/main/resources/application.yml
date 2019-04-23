@@ -30,6 +30,3 @@ spring:
             - Path=/client/*
           filters:
             - StripPrefix=1
-
-
-
