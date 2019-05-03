@@ -64,11 +64,11 @@ public class HeroServiceImpl implements HeroService {
     @Override
     @Cacheable(key = "'heroList-key'")
     public Page<Hero> findByNameLike(String name, Pageable pageable) {
-        if (name == null || name == "") {
-            name = "%%";
-        } else {
-            name = "%" + name + "%";
-        }
+//        if (name == null || name == "") {
+//            name = "%%";
+//        } else {
+//            name = "%" + name + "%";
+//        }
         return heroRepository.findByNameLike(name, pageable);
     }
 }

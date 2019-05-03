@@ -1,6 +1,7 @@
 package com.gzmu.springcloud_eureka_client.repository;
 
 import com.gzmu.springcloud_eureka_client.entity.BaseEntity;
+import com.gzmu.springcloud_eureka_client.entity.Hero;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -58,4 +59,13 @@ public interface BaseRepository<T extends BaseEntity, ID> extends JpaRepository<
     default void deleteById(ID id) {
         deleteExistById(id);
     }
+
+    /**
+     * 分页查询
+     *
+     * @param name
+     * @param pageable
+     * @return
+     */
+    Page<T> findByNameLike(String name, Pageable pageable);
 }
