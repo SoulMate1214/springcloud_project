@@ -1,11 +1,8 @@
 package com.gzmu.springcloud_eureka_client.service.serviceImpl;
 
-import com.gzmu.springcloud_eureka_client.entity.SysUser;
 import com.gzmu.springcloud_eureka_client.repository.SysUserRepository;
 import com.gzmu.springcloud_eureka_client.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 /**
  * @className: SysUserServiceImpl
@@ -24,13 +21,4 @@ public class SysUserServiceImpl implements SysUserService {
         this.sysUserRepository = sysUserRepository;
     }
 
-    @Override
-    public Page<SysUser> findByNameLike(String name, Pageable pageable) {
-        if (name == null || name == "") {
-            name = "%%";
-        } else {
-            name = "%" + name + "%";
-        }
-        return sysUserRepository.findByNameLike(name, pageable);
-    }
 }
